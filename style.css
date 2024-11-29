@@ -1,0 +1,164 @@
+/* CSS chung cho toàn bộ trang */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f3f3f3;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Căn giữa toàn bộ trang */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+/* Header */
+.header {
+    background-color: #6732db; /* Màu tím đậm */
+    color: #fff;
+    padding: 20px;
+    font-size: 2em;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Dòng chữ dưới hình ảnh */
+.header-text {
+    font-size: 50px; /* Làm chữ to như một header */
+    color: rgb(103, 99, 219); /* Màu tím đậm */
+    margin-top: 10px; /* Khoảng cách giữa hình ảnh và dòng chữ */
+    font-weight: bold; /* Chữ đậm */
+    font-family: 'Berkshire Swash', serif; /* Font chữ vintage */
+    text-transform: uppercase; /* Chữ in hoa */
+    text-align: center; /* Căn giữa dòng chữ */
+}
+
+/* Style cho bong bóng thoại */
+.explanation-bubble {
+    display: inline-block;
+    max-width: 300px;
+    padding: 10px;
+    margin: 10px auto;
+    background-color: #fff;
+    border-radius: 15px;
+    border: 2px solid #333;
+    position: relative;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Comic Sans MS', sans-serif;
+    font-size: 1.1em;
+    color: #444;
+    animation: bubbleAnimation 0.3s ease-out;
+}
+
+/* Phần đuôi của bong bóng thoại */
+.explanation-bubble:after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 15px solid #fff; /* Màu nền của bong bóng */
+}
+
+/* Hoạt ảnh bong bóng khi xuất hiện */
+@keyframes bubbleAnimation {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Cards (lá bài) */
+.card {
+    width: 200px;
+    height: 300px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background-color: #fff;
+    position: relative;
+    display: inline-block;
+    max-width: 200px; /* Đảm bảo card không vượt quá kích thước tối đa */
+}
+
+/* Tạo hiệu ứng lật */
+.card img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+/* Hiệu ứng hover khi rê chuột vào lá bài */
+.card:hover {
+    transform: scale(1.05);
+}
+
+/* Media Query cho điện thoại */
+@media screen and (max-width: 768px) {
+    /* Giảm kích thước font của body và header trên điện thoại */
+    body {
+        font-size: 14px;
+    }
+
+    .header {
+        font-size: 1.5em; /* Font nhỏ hơn trên điện thoại */
+        padding: 15px;
+    }
+
+    .header-text {
+        font-size: 28px; /* Font của header text sẽ nhỏ hơn trên điện thoại */
+        margin-top: 8px;
+    }
+
+    /* Sử dụng Flexbox để các lá bài hiển thị trên một dòng với 4 lá bài */
+    .cards-container {
+        display: flex;
+        flex-wrap: wrap;  /* Cho phép các phần tử bọc xuống dòng nếu không đủ không gian */
+        justify-content: space-between; /* Căn giữa và chia đều các phần tử */
+        gap: 10px; /* Khoảng cách giữa các lá bài */
+        align-items: flex-start; /* Đảm bảo các lá bài không bị kéo dọc */
+    }
+
+    /* Card hiển thị với kích thước nhỏ hơn và đúng tỉ lệ trên điện thoại */
+    .card {
+        flex: 0 0 auto; /* Đảm bảo card không giãn ra */
+        width: 22%; /* Mỗi lá bài chiếm khoảng 22% chiều rộng */
+        height: auto; /* Đảm bảo tỷ lệ chiều cao đúng */
+        max-width: 200px; /* Giới hạn chiều rộng tối đa */
+    }
+
+    /* Đảm bảo bóng thoại vẫn có chiều rộng hợp lý trên điện thoại */
+    .explanation-bubble {
+        max-width: 100%;
+        font-size: 14px;
+        margin: 5px 0;
+    }
+
+    /* Căn giữa các phần tử trong header */
+    .header {
+        justify-content: center;
+        text-align: center;
+    }
+}
+
